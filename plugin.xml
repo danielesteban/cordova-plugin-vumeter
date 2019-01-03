@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="cordova-plugin-vumeter"
+  version="1.0.0"
+>
+  <name>vumeter</name>
+  <description>Cordova VUMeter Plugin</description>
+  <license>MIT</license>
+  <keywords>cordova,vumeter</keywords>
+  <repo>https://github.com/danielesteban/cordova-plugin-vumeter.git</repo>
+  <issue>https://github.com/danielesteban/cordova-plugin-vumeter/issues</issue>
+
+  <js-module src="www/vumeter.js" name="vumeter">
+    <clobbers target="vumeter" />
+  </js-module>
+
+  <platform name="android">
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+      <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    </config-file>
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="VUMeter">
+        <param name="android-package" value="com.gatunes.vumeter.VUMeter" />
+      </feature>
+    </config-file>
+    <source-file src="src/android/VUMeter.java" target-dir="src/com/gatunes/vumeter" />
+  </platform>
+</plugin>
